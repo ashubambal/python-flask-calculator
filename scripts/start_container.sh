@@ -2,7 +2,7 @@
 set -e
 
 # Pull the Docker image from Docker Hub 
-docker pull softconsist/python-flask-calculator:latest
+docker pull softconsist/calculator-application:latest
 
 # Run the Docker image as a container
-docker run -d -p 5000:5000 softconsist/python-flask-calculator:latest
+docker run -d -p 5000:5000 softconsist/calculator-application:latest
