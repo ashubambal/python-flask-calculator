@@ -1,0 +1,26 @@
+version: 0.2
+env:
+  parameter-store:
+     DOCKER_REGISTRY_USERNAME: "/myapp/docker_credentials/username"
+     DOCKER_REGISTRY_PASSWORD: "/myapp/docker_credentials/password"
+     DOCKER_REGISTRY_URL: "/myapp/docker_registry_url"
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+     - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Building docker images" 
+      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/django-notes-app:latest" .
+      - docker push "$DOCKER_REGISTRY_USERNAME/django-notes-app:latest"
+  post_build:
+    commands:
+      - echo "Build Completed Successfully"
+#artifacts:
+  #files:
+    # - location
+    # - location
