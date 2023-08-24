@@ -20,7 +20,3 @@ phases:
   post_build:
     commands:
       - echo "Build Completed Successfully"
-#artifacts:
-  #files:
-    # - location
-    # - location
