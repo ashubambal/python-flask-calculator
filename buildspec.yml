@@ -15,8 +15,8 @@ phases:
     commands:
       - echo "Building docker images" 
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/python-flask-calculator:latest" .
-      - docker push "$DOCKER_REGISTRY_USERNAME/python-flask-calculator:latest"
+      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/prd-python-flask-calculator:latest" .
+      - docker push "$DOCKER_REGISTRY_USERNAME/prd-python-flask-calculator:latest"
   post_build:
     commands:
       - echo "Build Completed Successfully"
